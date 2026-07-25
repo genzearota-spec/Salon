@@ -20,7 +20,7 @@ export function Footer() {
           <div className="md:col-span-5 space-y-4">
             <a href="#hero" className="inline-block group">
               <span className="font-serif-display text-2xl tracking-[0.25em] text-[#FFFFFF] font-bold transition-colors block">
-                A SQUARE
+                {BUSINESS_INFO.wordmarkName}
               </span>
               <span className="text-[9px] tracking-[0.3em] text-[#C4B098] uppercase block mt-1 font-semibold">
                 {BUSINESS_INFO.wordmarkTagline}
@@ -28,7 +28,7 @@ export function Footer() {
             </a>
 
             <p className="text-xs text-[#E4E2DD]/80 font-normal max-w-sm leading-relaxed">
-              An elevated salon and spa experience in Shirur. Tailored care, personal style, and quiet luxury.
+              An elevated unisex salon experience in Pashan, Pune. Tailored care, personal style, and quiet luxury.
             </p>
 
             <div className="text-xs text-[#C4B098] flex items-center gap-1.5 pt-1">
@@ -81,9 +81,9 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#C4B098] gap-4">
-          <p>© 2026 A Square Unisex Salon & Spa. All rights reserved.</p>
+          <p>© 2026 Aura Unisex Salon. All rights reserved.</p>
           <p className="text-[#C4B098]/80 italic text-[10px]">
-            Official Concept Demo for Business Owner
+            Official Web Experience for Business
           </p>
         </div>
 

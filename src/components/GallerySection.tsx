@@ -76,7 +76,7 @@ export function GallerySection() {
         <div className="mb-10 p-4 bg-[#121216] border-l-4 border-[#D4AF37] rounded-r-sm flex items-center gap-3 text-xs text-[#E4E2DD] shadow-md border border-[#D4AF37]/20 border-l-transparent">
           <Info className="w-4 h-4 text-[#D4AF37] shrink-0" />
           <span>
-            <strong className="text-[#FFFFFF]">Concept Gallery:</strong> High-resolution curated interior and aesthetic photography. The salon owner can easily replace these with actual photo shoots of A Square.
+            <strong className="text-[#FFFFFF]">Concept Gallery:</strong> High-resolution curated interior and aesthetic photography. The salon owner can easily replace these with actual photos of Aura Unisex Salon.
           </span>
         </div>
 

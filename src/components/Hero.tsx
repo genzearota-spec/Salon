@@ -49,11 +49,11 @@ export function Hero() {
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#D4AF37] font-bold">
-            SHIRUR, MH
+            PASHAN, PUNE
           </span>
         </div>
         <p className="text-[11px] text-[#E4E2DD]/90 font-light leading-snug">
-          4.8 / 5 Rated Luxury Sanctuary on Sanjeevan Hospital Road.
+          4.8 / 5 Rated Luxury Sanctuary on Baner - Pashan Link Road.
         </p>
       </motion.div>
 
@@ -91,7 +91,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.35 }}
           className="mt-6 text-base sm:text-lg md:text-xl text-[#E4E2DD]/90 max-w-2xl font-light leading-relaxed"
         >
-          An elevated salon and spa sanctuary in Shirur. Dedicated to individual care, personal style, and total well-being.
+          An elevated unisex salon sanctuary in Pashan, Pune. Dedicated to individual care, personal style, and total well-being.
         </motion.p>
 
         {/* 3D Tubes Cursor Prompt */}
@@ -114,7 +114,7 @@ export function Hero() {
         >
           <span className="flex items-center gap-2 bg-[#121216]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#D4AF37]/25 shadow-sm">
             <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span className="text-[#E4E2DD] font-medium">Shirur, Maharashtra</span>
+            <span className="text-[#E4E2DD] font-medium">Pashan, Pune</span>
           </span>
 
           <span className="flex items-center gap-2 bg-[#121216]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#D4AF37]/25 shadow-sm">
@@ -125,7 +125,7 @@ export function Hero() {
           <span className="flex items-center gap-2 bg-[#121216]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#D4AF37]/30 text-[#E4E2DD] shadow-sm">
             <Star className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" />
             <span className="font-bold text-[#FFFFFF]">4.8 / 5</span>
-            <span className="text-[10px] text-[#F5E6CA]">(24 Public Reviews)</span>
+            <span className="text-[10px] text-[#F5E6CA]">(35 Public Reviews)</span>
           </span>
         </motion.div>
 

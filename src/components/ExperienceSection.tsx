@@ -23,16 +23,16 @@ export function ExperienceSection() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#121216]/90 text-[#F5E6CA] rounded-full shadow-sm border border-[#D4AF37]/30">
             <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#F5E6CA] font-bold">
-              THE A SQUARE ETHOS
+              THE AURA ETHOS
             </span>
           </div>
 
           <h2 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-[#FFFFFF]">
-            WHY A SQUARE
+            WHY AURA
           </h2>
 
           <p className="text-sm sm:text-base text-[#F5E6CA] font-normal leading-relaxed">
-            Four quiet pillars guiding our approach to personal care, atmosphere, and unisex styling in Shirur.
+            Four quiet pillars guiding our approach to personal care, atmosphere, and unisex styling in Pashan, Pune.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export function ExperienceSection() {
 
                 {/* Bottom Fine Line Accent */}
                 <div className="mt-8 pt-4 border-t border-[#D4AF37]/20 flex items-center justify-between text-[10px] tracking-[0.2em] text-[#D4AF37] uppercase font-bold">
-                  <span>SHIRUR</span>
+                  <span>PASHAN</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] group-hover:scale-125 transition-transform" />
                 </div>
               </div>

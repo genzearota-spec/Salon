@@ -15,7 +15,7 @@ export function IntroSection() {
           <div className="w-8 h-[2px] bg-[#D4AF37]" />
           <span className="text-xs uppercase tracking-[0.3em] text-[#F5E6CA] font-semibold flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-            SHIRUR, MAHARASHTRA
+            PASHAN, PUNE, MAHARASHTRA
           </span>
         </div>
 
@@ -35,7 +35,7 @@ export function IntroSection() {
             </p>
 
             <p className="text-sm sm:text-base text-[#F5E6CA] leading-relaxed max-w-xl font-normal pt-2">
-              At <strong className="text-[#FFFFFF] font-semibold">A Square Unisex Salon & Spa</strong>, every visit is thoughtfully designed around quiet comfort, meticulous attention, and tailored unisex care in the heart of Shirur.
+              At <strong className="text-[#FFFFFF] font-semibold">Aura Unisex Salon</strong>, every visit is thoughtfully designed around quiet comfort, meticulous attention, and tailored unisex care on Baner - Pashan Link Road, Pashan.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-xs tracking-[0.2em] uppercase font-bold text-[#D4AF37]">
@@ -53,14 +53,14 @@ export function IntroSection() {
               <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-sm bg-[#121216] shadow-[0_20px_50px_rgba(0,0,0,0.9)] group border border-[#D4AF37]/30">
                 <img
                   src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&q=85&w=1000"
-                  alt="A Square Salon Atmosphere Concept"
+                  alt="Aura Unisex Salon Atmosphere Concept"
                   className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 filter brightness-95 group-hover:brightness-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#08080A]/90 via-transparent to-transparent opacity-90" />
                 
                 <div className="absolute bottom-6 left-6 right-6 text-[#E4E2DD] p-5 bg-[#121216]/90 backdrop-blur-md border border-[#D4AF37]/30 rounded-sm shadow-xl">
                   <span className="text-[10px] tracking-[0.25em] text-[#D4AF37] uppercase font-bold block mb-1">
-                    A SQUARE SANCTUARY
+                    AURA SANCTUARY
                   </span>
                   <p className="text-xs text-[#E4E2DD] font-light italic leading-relaxed">
                     "Designed for individual expression, relaxation, and contemporary grooming."

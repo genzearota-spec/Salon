@@ -28,7 +28,7 @@ export default function App() {
         {/* Section 4: Services Preview */}
         <ServicesSection />
 
-        {/* Section 5: Experience / Why A Square */}
+        {/* Section 5: Experience / Why Aura */}
         <ExperienceSection />
 
         {/* Section 6: Visual Photo Gallery */}

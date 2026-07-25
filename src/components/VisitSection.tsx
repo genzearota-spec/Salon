@@ -21,7 +21,7 @@ export function VisitSection() {
             </span>
           </div>
           <h2 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-[#FFFFFF]">
-            VISIT A SQUARE
+            VISIT AURA
           </h2>
         </div>
 
@@ -36,10 +36,10 @@ export function VisitSection() {
                 <div className="space-y-6">
                   <div>
                     <span className="font-serif-display text-3xl font-bold tracking-[0.15em] text-gold-gradient block">
-                      A SQUARE
+                      {BUSINESS_INFO.wordmarkName}
                     </span>
                     <span className="text-xs tracking-[0.25em] text-[#F5E6CA] uppercase block mt-1 font-semibold">
-                      UNISEX SALON & SPA
+                      {BUSINESS_INFO.wordmarkTagline}
                     </span>
                   </div>
 
@@ -54,9 +54,9 @@ export function VisitSection() {
                           Salon Address
                         </h3>
                         <p className="text-sm text-[#E4E2DD] font-normal leading-relaxed">
-                          Sanjeevan Hospital Road<br />
-                          Gujarmala, Shirur<br />
-                          Maharashtra 412210, India
+                          Mont Vert Finesse Housing Society<br />
+                          Baner - Pashan Link Rd, near Nano Space IT Park<br />
+                          Pashan, Pune, Maharashtra 411021, India
                         </p>
                       </div>
                     </div>
@@ -137,36 +137,41 @@ export function VisitSection() {
           {/* Right Column: Visual Map Frame */}
           <div className="lg:col-span-6">
             <ThreeDCard depth={15} className="h-full">
-              <div className="bg-[#121216] rounded-sm border border-[#D4AF37]/30 overflow-hidden relative flex flex-col justify-between min-h-[400px] h-full shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
-                {/* Map Placeholder Graphic / Embed */}
-                <div className="relative h-full w-full bg-[#08080A] flex flex-col items-center justify-center p-8 text-center group">
-                  <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
-                  
-                  <div className="relative z-10 space-y-5 max-w-md">
-                    <div className="w-20 h-20 rounded-full bg-[#121216] text-[#E4E2DD] flex items-center justify-center mx-auto shadow-xl animate-bounce border border-[#D4AF37]/40">
-                      <MapPin className="w-10 h-10 text-[#D4AF37]" />
+              <div className="bg-[#121216] rounded-sm border border-[#D4AF37]/30 overflow-hidden relative flex flex-col justify-between min-h-[420px] h-full shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                {/* Embedded Interactive Google Map */}
+                <div className="relative w-full h-full min-h-[320px] bg-[#08080A]">
+                  <iframe
+                    title="Aura Unisex Salon Google Maps Location"
+                    src="https://maps.google.com/maps?q=Aura%20Unisex%20Salon%20Mont%20Vert%20Finesse%20Baner%20Pashan%20Link%20Rd%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full min-h-[320px] border-0 filter grayscale invert contrast-125 opacity-80 hover:opacity-100 transition-opacity"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+
+                  {/* Location Overlay Bar */}
+                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-[#08080A] via-[#08080A]/90 to-transparent flex items-center justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
+                        <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+                        <span>Pashan, Pune, MH</span>
+                      </div>
+                      <p className="text-[11px] text-[#E4E2DD]/80">
+                        Baner - Pashan Link Rd, near Nano Space IT Park
+                      </p>
                     </div>
 
-                    <h3 className="font-serif-display text-3xl sm:text-4xl font-semibold text-gold-gradient">
-                      A SQUARE SALON & SPA
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-[#E4E2DD]/85 font-normal leading-relaxed">
-                      Located conveniently on Sanjeevan Hospital Road, Gujarmala in Shirur.
-                    </p>
-
-                    <div className="pt-3">
-                      <LuxuryButton
-                        href={BUSINESS_INFO.googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="gold"
-                        size="md"
-                        icon={<Navigation className="w-4 h-4 text-[#08080A]" />}
-                      >
-                        Open in Google Maps
-                      </LuxuryButton>
-                    </div>
+                    <LuxuryButton
+                      href={BUSINESS_INFO.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="gold"
+                      size="sm"
+                      icon={<Navigation className="w-3.5 h-3.5 text-[#08080A]" />}
+                      className="shrink-0"
+                    >
+                      Open Maps
+                    </LuxuryButton>
                   </div>
                 </div>
               </div>

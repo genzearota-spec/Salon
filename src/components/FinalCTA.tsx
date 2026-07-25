@@ -29,7 +29,7 @@ export function FinalCTA() {
 
             {/* Supporting Text */}
             <p className="mt-6 text-base sm:text-lg text-[#E4E2DD] max-w-2xl mx-auto font-normal leading-relaxed">
-              Connect with A Square Unisex Salon & Spa to enquire about available services, custom bridal packages, and immediate appointments.
+              Connect with Aura Unisex Salon to enquire about available services, custom styling packages, and immediate appointments.
             </p>
 
             {/* Buttons */}
@@ -59,7 +59,7 @@ export function FinalCTA() {
 
             {/* Small Operating Note */}
             <p className="mt-10 text-xs text-[#D4AF37] tracking-wider uppercase font-semibold pt-6 border-t border-[#D4AF37]/20">
-              Shirur, Maharashtra • Open Every Day 8:00 AM – 10:30 PM
+              Pashan, Pune, Maharashtra • Open Every Day 8:00 AM – 10:30 PM
             </p>
 
           </div>

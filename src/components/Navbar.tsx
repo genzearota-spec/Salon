@@ -50,7 +50,7 @@ export function Navbar({ onOpenBookingModal }: NavbarProps) {
             className="group flex flex-col focus:outline-none"
           >
             <span className="font-serif-display text-2xl sm:text-3xl tracking-[0.28em] text-gold-gradient font-bold drop-shadow-md leading-none">
-              A SQUARE
+              {BUSINESS_INFO.wordmarkName}
             </span>
             <span className="text-[9px] sm:text-[10px] tracking-[0.35em] text-[#D4AF37] uppercase font-semibold mt-1">
               {BUSINESS_INFO.wordmarkTagline}
@@ -126,10 +126,10 @@ export function Navbar({ onOpenBookingModal }: NavbarProps) {
           <div className="flex flex-col space-y-6 text-center">
             <div className="pb-4 border-b border-[#D4AF37]/20">
               <span className="font-serif-display text-2xl tracking-[0.2em] text-gold-gradient font-bold block">
-                A SQUARE
+                {BUSINESS_INFO.wordmarkName}
               </span>
               <span className="text-[10px] tracking-[0.25em] text-[#D4AF37] uppercase block mt-1 font-semibold">
-                UNISEX SALON & SPA • SHIRUR
+                {BUSINESS_INFO.wordmarkTagline} • PASHAN, PUNE
               </span>
             </div>
 

@@ -89,7 +89,7 @@ export function LightBoxModal({
           <div className="pt-6 border-t border-[#F4EBE1]/10 space-y-3">
             <div className="flex items-center gap-1.5 text-[11px] text-[#A79C8D]">
               <MapPin className="w-3.5 h-3.5 text-[#E2D4C3]" />
-              <span>A Square Salon & Spa • Shirur</span>
+              <span>Aura Unisex Salon • Pashan, Pune</span>
             </div>
 
             <p className="text-[10px] text-[#A79C8D]/60 italic">

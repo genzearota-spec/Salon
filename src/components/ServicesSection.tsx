@@ -135,7 +135,7 @@ export function ServicesSection() {
           </div>
 
           <LuxuryButton
-            href={createWhatsAppUrl("Hello A Square Unisex Salon & Spa, I would like to inquire about custom service packages.")}
+            href={createWhatsAppUrl("Hello Aura Unisex Salon, I would like to inquire about custom service packages.")}
             target="_blank"
             rel="noopener noreferrer"
             variant="gold"

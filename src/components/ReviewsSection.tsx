@@ -47,7 +47,7 @@ export function ReviewsSection() {
               CUSTOMER EXPERIENCES
             </h2>
             <p className="text-sm text-[#F5E6CA] font-normal mt-2 max-w-xl">
-              Authentic feedback from visitors at <strong className="text-[#FFFFFF]">A Square Unisex Salon & Spa</strong> on Sanjeevan Hospital Road, Shirur.
+              Authentic feedback from visitors at <strong className="text-[#FFFFFF]">Aura Unisex Salon</strong> at Baner - Pashan Link Road, Pashan, Pune.
             </p>
           </div>
 
@@ -187,7 +187,7 @@ export function ReviewsSection() {
                     </button>
 
                     <span className="text-[10px] uppercase tracking-widest text-[#D4AF37]/60 font-semibold">
-                      Shirur Location
+                      Pashan Location
                     </span>
                   </div>
 
@@ -202,13 +202,13 @@ export function ReviewsSection() {
           <div className="space-y-1 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 text-xs uppercase tracking-widest text-[#D4AF37] font-bold">
               <MessageSquare className="w-4 h-4 text-[#D4AF37]" />
-              <span>Visited A Square Unisex Salon & Spa?</span>
+              <span>Visited Aura Unisex Salon?</span>
             </div>
             <h3 className="font-serif-display text-2xl sm:text-3xl text-[#FFFFFF] font-normal">
-              Share your experience with our Shirur community
+              Share your experience with our Pune community
             </h3>
             <p className="text-xs text-[#E4E2DD]/80 max-w-xl">
-              Your valuable review helps others discover our personalized styling, hygiene, and spa services on Sanjeevan Hospital Road.
+              Your valuable review helps others discover our personalized styling, hygiene, and beauty services near Mont Vert Finesse, Pashan.
             </p>
           </div>
 

@@ -44,7 +44,7 @@ export function TrustSection() {
               </span>
 
               <p className="text-xs sm:text-sm text-[#E4E2DD] font-normal mt-1">
-                Based on <strong className="font-semibold text-[#FFFFFF]">{BUSINESS_INFO.reviewCount} public reviews</strong> in Shirur, Maharashtra
+                Based on <strong className="font-semibold text-[#FFFFFF]">{BUSINESS_INFO.reviewCount} public reviews</strong> in Pashan, Pune, MH
               </p>
             </div>
 
@@ -57,7 +57,7 @@ export function TrustSection() {
                 icon={<MapPin className="w-4 h-4 text-[#08080A]" />}
                 className="w-full sm:w-auto"
               >
-                Visit A Square
+                Visit Aura
               </LuxuryButton>
 
               <LuxuryButton
