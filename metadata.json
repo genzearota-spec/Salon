@@ -1,0 +1,6 @@
+{
+  "name": "A Square Unisex Salon & Spa",
+  "description": "Premium luxury salon and spa demo website for A Square Unisex Salon & Spa in Shirur, Maharashtra.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
