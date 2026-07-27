@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { IntroSection } from './components/IntroSection';
@@ -10,10 +11,12 @@ import { VisitSection } from './components/VisitSection';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { Generator } from './components/Generator';
+import { OrderPage } from './components/OrderPage';
 
-export default function App() {
+function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#08080A] text-[#E4E2DD] font-sans antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#4A4A4A] font-sans antialiased overflow-x-hidden font-bold">
       {/* Sticky Navigation Header */}
       <Navbar />
 
@@ -31,10 +34,10 @@ export default function App() {
         {/* Section 5: Experience / Why Aura */}
         <ExperienceSection />
 
-        {/* Section 6: Visual Photo Gallery */}
+        {/* Section 7: Visual Photo Gallery */}
         <GallerySection />
 
-        {/* Section 7: Customer Reviews & Ratings */}
+        {/* Section 8: Customer Reviews & Ratings */}
         <ReviewsSection />
 
         {/* Section 9: Customer Trust & Rating Overview */}
@@ -53,5 +56,17 @@ export default function App() {
       {/* Persistent Floating WhatsApp Quick Button */}
       <FloatingWhatsApp />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/generator" element={<Generator />} />
+        <Route path="/order" element={<OrderPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

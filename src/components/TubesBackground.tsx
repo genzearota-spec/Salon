@@ -8,8 +8,8 @@ interface TubesBackgroundProps {
   lightColors?: string[];
 }
 
-const DEFAULT_TUBE_COLORS = ["#F5E6CA", "#D4AF37", "#C5A059"];
-const DEFAULT_LIGHT_COLORS = ["#FFF6E5", "#F5E6CA", "#D4AF37", "#1A1612"];
+const DEFAULT_TUBE_COLORS = ["#F5E6CA", "#F4C2C2", "#C5A059"];
+const DEFAULT_LIGHT_COLORS = ["#FFF6E5", "#F5E6CA", "#F4C2C2", "#1A1612"];
 
 export function TubesBackground({ 
   children, 

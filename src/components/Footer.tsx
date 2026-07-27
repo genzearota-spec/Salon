@@ -11,7 +11,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0C0C0E] text-[#E4E2DD] pt-16 pb-12 border-t border-[#E2D4C3]/15">
+    <footer className="bg-[#0C0C0E] text-[#4A4A4A] pt-16 pb-12 border-t border-[#E2D4C3]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#E2D4C3]/15">
@@ -19,15 +19,15 @@ export function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
             <a href="#hero" className="inline-block group">
-              <span className="font-serif-display text-2xl tracking-[0.25em] text-[#FFFFFF] font-bold transition-colors block">
+              <span className="font-serif-display text-2xl tracking-[0.25em] text-[#333333] font-bold transition-colors block">
                 {BUSINESS_INFO.wordmarkName}
               </span>
-              <span className="text-[9px] tracking-[0.3em] text-[#C4B098] uppercase block mt-1 font-semibold">
+              <span className="text-[9px] tracking-[0.3em] text-[#C4B098] uppercase block mt-1 font-bold">
                 {BUSINESS_INFO.wordmarkTagline}
               </span>
             </a>
 
-            <p className="text-xs text-[#E4E2DD]/80 font-normal max-w-sm leading-relaxed">
+            <p className="text-xs text-[#4A4A4A]/80 font-bold max-w-sm leading-relaxed">
               An elevated unisex salon experience in Pashan, Pune. Tailored care, personal style, and quiet luxury.
             </p>
 
@@ -39,7 +39,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-[#FFFFFF]">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-[#333333]">
               Navigation
             </h4>
             <ul className="space-y-2">
@@ -47,7 +47,7 @@ export function Footer() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-xs text-[#E4E2DD]/80 hover:text-[#FFFFFF] transition-colors uppercase tracking-[0.15em] font-medium"
+                    className="text-xs text-[#4A4A4A]/80 hover:text-[#333333] transition-colors uppercase tracking-[0.15em] font-bold"
                   >
                     {item.name}
                   </a>
@@ -58,14 +58,14 @@ export function Footer() {
 
           {/* Contact & Hours */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-[#FFFFFF]">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-[#333333]">
               Contact & Hours
             </h4>
 
-            <div className="space-y-2 text-xs text-[#E4E2DD]/80">
+            <div className="space-y-2 text-xs text-[#4A4A4A]/80">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#C4B098]" />
-                <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="hover:text-[#FFFFFF] transition-colors font-semibold">
+                <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="hover:text-[#333333] transition-colors font-bold">
                   {BUSINESS_INFO.phoneDisplay}
                 </a>
               </div>

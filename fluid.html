@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Unisex Salon - Luxury 3D Fluid Experience</title>
+  
+  <!-- Google Fonts for Luxury Salon Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    /* CSS Reset & Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #1a120e;
+      color: #f5ebe0;
+    }
+
+    /* WebGL Canvas Container */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* Main Overlay Layout */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      pointer-events: none;
+    }
+
+    /* Header Nav */
+    .brand-header {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: #f5ebe0;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo span {
+      color: #e0a96d;
+      font-weight: 300;
+    }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      background: rgba(224, 169, 109, 0.15);
+      border: 1px solid rgba(224, 169, 109, 0.35);
+      color: #e0a96d;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Center Glassmorphism Container */
+    .hero-glass-card {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 580px;
+      padding: 3rem 2.5rem;
+      background: rgba(28, 18, 14, 0.48);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(224, 169, 109, 0.32);
+      border-radius: 20px;
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    }
+
+    .hero-glass-card:hover {
+      border-color: rgba(224, 169, 109, 0.55);
+      transform: translateY(-2px);
+    }
+
+    /* Ambient Rose Gold Shimmer Line */
+    .hero-glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #b76e79, #e0a96d, #f5ebe0, transparent);
+      opacity: 0.8;
+    }
+
+    .tagline-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #e0a96d;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .salon-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f5ebe0 50%, #e0a96d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (min-width: 640px) {
+      .salon-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    .salon-description {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(245, 235, 224, 0.88);
+      font-weight: 300;
+      margin-bottom: 2.2rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Luxurious Button */
+    .cta-btn-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-lux {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 2.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #1a120e;
+      background: linear-gradient(135deg, #e0a96d 0%, #b76e79 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(183, 110, 121, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-lux::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(30deg) translateY(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .btn-lux:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(224, 169, 109, 0.5);
+      color: #0c0806;
+    }
+
+    .btn-lux:hover::after {
+      transform: rotate(30deg) translateY(100%);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f5ebe0;
+      border: 1px solid rgba(224, 169, 109, 0.35);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(224, 169, 109, 0.2);
+      border-color: rgba(224, 169, 109, 0.65);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer location info */
+    .location-footer {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: rgba(245, 235, 224, 0.65);
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: auto;
+    }
+
+    /* Interactive Booking Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 8, 6, 0.82);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 440px;
+      background: #1e1510;
+      border: 1px solid rgba(224, 169, 109, 0.4);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: #e0a96d;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #e0a96d;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(224, 169, 109, 0.28);
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: #e0a96d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WebGL Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <!-- HTML Glassmorphism Overlay Container -->
+  <div class="app-viewport">
+    
+    <!-- Top Header Navigation -->
+    <header class="brand-header">
+      <a href="#" class="brand-logo">
+        AURA <span>SALON</span>
+      </a>
+      <div class="nav-badge">Pashan, Pune</div>
+    </header>
+
+    <!-- Center Glassmorphism Box -->
+    <main class="hero-glass-card">
+      <span class="tagline-eyebrow">HAIR • BEAUTY • SPA</span>
+      <h1 class="salon-title">AURA UNISEX SALON</h1>
+      <p class="salon-description">
+        Step into an atmosphere of quiet luxury. Tailored haircuts, glowing facial therapies, and soothing spa care designed for your unique personal style.
+      </p>
+      
+      <div class="cta-btn-wrapper">
+        <button class="btn-lux" id="open-booking">
+          <span>Book Appointment</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-lux btn-secondary" onclick="window.open('https://maps.app.goo.gl/vT6YLyry7RXcAeap6', '_blank')">
+          View Location
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer Location -->
+    <footer class="location-footer">
+      Baner - Pashan Link Rd, near Nano Space IT Park, Pune • Open Daily 8 AM – 10:30 PM
+    </footer>
+
+  </div>
+
+  <!-- Interactive Appointment Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="close-modal">&times;</button>
+      <h3 style="font-family:'Cormorant Garamond', serif; font-size:1.8rem; color:#e0a96d; margin-bottom:0.5rem;">Book Your Appointment</h3>
+      <p style="font-size:0.85rem; color:#e6d7c3; opacity:0.8; margin-bottom:1.5rem;">Select your preferred date and time slot for Aura Unisex Salon.</p>
+
+      <form id="booking-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="cust-name" class="form-control" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label>Select Service</label>
+          <select id="cust-service" class="form-control">
+            <option>Hair Cut & Precision Styling</option>
+            <option>Keratin & Smoothning Treatment</option>
+            <option>Hydra Facial & Skin Glow</option>
+            <option>Body & Scalp Relaxation Spa</option>
+            <option>Beard Sculpting & Grooming</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="cust-date" class="form-control" required />
+        </div>
+        <button type="submit" class="btn-lux" style="width:100%; margin-top:1rem;">
+          Confirm Booking via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Three.js 3D Fluid WebGL Logic -->
+  <script>
+    // --- 1. Scene Setup ---
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(0, 0, 15);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // --- 2. Custom GLSL Shaders for Warm Mocha, Soft Beige & Rose Gold Fluid ---
+    const vertexShader = `
+      uniform float uTime;
+      uniform vec2 uMouse;
+      varying vec2 vUv;
+      varying vec3 vNormal;
+      varying vec3 vPosition;
+
+      // Simplex Noise 3D implementation
+      vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+      vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
+
+      float snoise(vec3 v){
+        const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+        const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+
+        vec3 i  = floor(v + dot(v, C.yyy));
+        vec3 x0 = v - i + dot(i, C.xxx);
+
+        vec3 g = step(x0.yzx, x0.xyz);
+        vec3 l = 1.0 - g;
+        vec3 i1 = min(g.xyz, l.zxy);
+        vec3 i2 = max(g.xyz, l.zxy);
+
+        vec3 x1 = x0 - i1 + 1.0 * C.xxx;
+        vec3 x2 = x0 - i2 + 2.0 * C.xxx;
+        vec3 x3 = x0 - D.yyy;
+
+        i = mod(i, 289.0);
+        vec4 p = permute(permute(permute(
+                    i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                  + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                  + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+
+        float n_ = 0.142857142857;
+        vec3 ns = n_ * D.wyz - D.xzx;
+
+        vec4 j = p - 49.0 * floor(p * ns.z);
+
+        vec4 x_ = floor(j * ns.z);
+        vec4 y_ = floor(j - 7.0 * x_);
+
+        vec4 x = x_ *ns.x + ns.yyyy;
+        vec4 y = y_ *ns.x + ns.yyyy;
+        vec4 h = 1.0 - abs(x) - abs(y);
+
+        vec4 b0 = vec4(x.xy, y.xy);
+        vec4 b1 = vec4(x.zw, y.zw);
+
+        vec4 s0 = floor(b0)*2.0 + 1.0;
+        vec4 s1 = floor(b1)*2.0 + 1.0;
+        vec4 sh = -step(h, vec4(0.0));
+
+        vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+        vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+
+        vec3 p0 = vec3(a0.xy, h.x);
+        vec3 p1 = vec3(a0.zw, h.y);
+        vec3 p2 = vec3(a1.xy, h.z);
+        vec3 p3 = vec3(a1.zw, h.w);
+
+        vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+        p0 *= norm.x;
+        p1 *= norm.y;
+        p2 *= norm.z;
+        p3 *= norm.w;
+
+        vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+        m = m * m;
+        return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+      }
+
+      void main() {
+        vUv = uv;
+        vNormal = normal;
+
+        vec3 pos = position;
+
+        // Layered slow-moving fluid noise displacement
+        float noise1 = snoise(vec3(pos.x * 0.22 + uMouse.x * 0.4, pos.y * 0.22 + uMouse.y * 0.4, uTime * 0.18));
+        float noise2 = snoise(vec3(pos.x * 0.45, pos.y * 0.45, uTime * 0.32)) * 0.5;
+        
+        float elevation = (noise1 + noise2) * 1.85;
+        pos.z += elevation;
+
+        vPosition = pos;
+
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `;
+
+    const fragmentShader = `
+      uniform float uTime;
+      varying vec2 vUv;
+      varying vec3 vNormal;
+      varying vec3 vPosition;
+
+      void main() {
+        // High-end salon color palette
+        vec3 deepMocha = vec3(0.18, 0.11, 0.08);   // Warm Deep Mocha
+        vec3 warmMocha = vec3(0.38, 0.24, 0.18);   // Rich Mocha
+        vec3 roseGold  = vec3(0.78, 0.48, 0.52);   // Soft Rose Gold
+        vec3 softBeige = vec3(0.92, 0.85, 0.76);   // Soft Beige
+        vec3 champagne = vec3(0.98, 0.90, 0.75);   // Champagne Shimmer
+
+        // Height factor for color blending
+        float mixFactor = (vPosition.z + 1.85) / 3.7;
+        mixFactor = clamp(mixFactor, 0.0, 1.0);
+
+        // Multi-tone gradient transition
+        vec3 color = mix(deepMocha, warmMocha, smoothstep(0.0, 0.4, mixFactor));
+        color = mix(color, roseGold, smoothstep(0.35, 0.7, mixFactor));
+        color = mix(color, softBeige, smoothstep(0.65, 0.95, mixFactor));
+
+        // Fresnel lighting reflection for glossy silk shimmer
+        vec3 viewDirection = normalize(vec3(0.0, 0.0, 15.0) - vPosition);
+        float fresnel = pow(1.0 - max(dot(viewDirection, vNormal), 0.0), 3.0);
+        
+        color += champagne * fresnel * 0.35;
+
+        // Subtle ambient specular highlight
+        float specular = pow(clamp(vPosition.z / 1.85, 0.0, 1.0), 4.0);
+        color += vec3(1.0, 0.92, 0.8) * specular * 0.22;
+
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+
+    // --- 3. Geometry & Material ---
+    const geometry = new THREE.PlaneGeometry(26, 20, 128, 128);
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uMouse: { value: new THREE.Vector2(0, 0) }
+    };
+
+    const material = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      uniforms: uniforms,
+      wireframe: false,
+      side: THREE.DoubleSide
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.x = -0.3; // Angle for 3D depth perspective
+    scene.add(mesh);
+
+    // --- 4. Mouse Movement & Parallax ---
+    let targetMouse = { x: 0, y: 0 };
+    window.addEventListener('mousemove', (e) => {
+      targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    // Touch support for mobile devices
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        targetMouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        targetMouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+      }
+    });
+
+    // --- 5. Animation Loop ---
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const elapsedTime = clock.getElapsedTime();
+      uniforms.uTime.value = elapsedTime;
+
+      // Smooth mouse interpolation
+      uniforms.uMouse.value.x += (targetMouse.x - uniforms.uMouse.value.x) * 0.05;
+      uniforms.uMouse.value.y += (targetMouse.y - uniforms.uMouse.value.y) * 0.05;
+
+      // Gentle mesh tilt
+      mesh.rotation.y = uniforms.uMouse.value.x * 0.08;
+      mesh.rotation.x = -0.3 + (uniforms.uMouse.value.y * 0.08);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // --- 6. Responsive Window Resize ---
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+
+    // --- 7. Modal & Interaction Handlers ---
+    const modal = document.getElementById('booking-modal');
+    const openBtn = document.getElementById('open-booking');
+    const closeBtn = document.getElementById('close-modal');
+    const form = document.getElementById('booking-form');
+
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cust-name').value;
+      const service = document.getElementById('cust-service').value;
+      const date = document.getElementById('cust-date').value;
+
+      const message = `Hello Aura Unisex Salon, I would like to book an appointment.\n\nName: ${name}\nService: ${service}\nPreferred Date: ${date}`;
+      const encodedMsg = encodeURIComponent(message);
+
+      modal.classList.remove('active');
+      window.open(`https://wa.me/919822334455?text=${encodedMsg}`, '_blank');
+    });
+  </script>
+</body>
+</html>

@@ -20,18 +20,18 @@ export function LightBoxModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#08080A]/95 backdrop-blur-lg animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#FAFAFA]/95 backdrop-blur-lg animate-in fade-in duration-300"
       onClick={onClose}
     >
       <div
-        className="relative max-w-5xl w-full bg-[#101012] border border-[#E2D4C3]/30 rounded-sm overflow-hidden shadow-2xl flex flex-col md:flex-row"
+        className="relative max-w-5xl w-full bg-[#FFFFFF] border border-[#E2D4C3]/30 rounded-sm overflow-hidden shadow-2xl flex flex-col md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#08080A]/80 text-[#F4EBE1] hover:text-[#E2D4C3] transition-colors focus:outline-none"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#FAFAFA]/80 text-[#F4EBE1] hover:text-[#E2D4C3] transition-colors focus:outline-none"
           aria-label="Close Lightbox"
         >
           <X className="w-6 h-6" />
@@ -43,7 +43,7 @@ export function LightBoxModal({
             <button
               type="button"
               onClick={onSelectPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#08080A]/80 text-[#F4EBE1] hover:text-[#E2D4C3] hover:bg-[#08080A] border border-[#E2D4C3]/30 transition-all focus:outline-none"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#FAFAFA]/80 text-[#F4EBE1] hover:text-[#E2D4C3] hover:bg-[#FAFAFA] border border-[#E2D4C3]/30 transition-all focus:outline-none"
               aria-label="Previous Image"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -51,7 +51,7 @@ export function LightBoxModal({
             <button
               type="button"
               onClick={onSelectNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#08080A]/80 text-[#F4EBE1] hover:text-[#E2D4C3] hover:bg-[#08080A] border border-[#E2D4C3]/30 transition-all focus:outline-none md:right-72"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#FAFAFA]/80 text-[#F4EBE1] hover:text-[#E2D4C3] hover:bg-[#FAFAFA] border border-[#E2D4C3]/30 transition-all focus:outline-none md:right-72"
               aria-label="Next Image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -60,7 +60,7 @@ export function LightBoxModal({
         )}
 
         {/* Image Frame */}
-        <div className="relative flex-1 bg-[#08080A] flex items-center justify-center min-h-[350px] md:min-h-[500px]">
+        <div className="relative flex-1 bg-[#FAFAFA] flex items-center justify-center min-h-[350px] md:min-h-[500px]">
           <img
             src={item.image}
             alt={item.title}
@@ -71,17 +71,17 @@ export function LightBoxModal({
         {/* Image Info Side Panel */}
         <div className="w-full md:w-80 bg-[#18181A] p-6 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#E2D4C3]/20 text-[#F4EBE1]">
           <div className="space-y-4">
-            <div className="inline-block px-3 py-1 bg-[#08080A] border border-[#E2D4C3]/40 rounded-sm">
-              <span className="text-[10px] tracking-[0.25em] text-[#E2D4C3] uppercase font-semibold">
+            <div className="inline-block px-3 py-1 bg-[#FAFAFA] border border-[#E2D4C3]/40 rounded-sm">
+              <span className="text-[10px] tracking-[0.25em] text-[#E2D4C3] uppercase font-bold">
                 {item.category}
               </span>
             </div>
 
-            <h3 className="font-serif-display text-2xl text-[#F4EBE1] font-semibold">
+            <h3 className="font-serif-display text-2xl text-[#F4EBE1] font-bold">
               {item.title}
             </h3>
 
-            <p className="text-xs text-[#A79C8D] leading-relaxed font-light">
+            <p className="text-xs text-[#A79C8D] leading-relaxed font-bold">
               {item.caption}
             </p>
           </div>

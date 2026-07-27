@@ -40,16 +40,16 @@ export function LuxuryButton({
 
   if (variant === 'gold') {
     variantClasses =
-      'bg-gradient-to-r from-[#F5E6CA] via-[#D4AF37] to-[#C5A059] text-[#08080A] shadow-[0_4px_25px_rgba(212,175,55,0.28)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.48)] hover:scale-[1.02] active:scale-[0.98]';
+      'bg-gradient-to-r from-[#F4C2C2] via-[#F4C2C2] to-[#E8B4B8] text-[#FAFAFA] shadow-[0_4px_25px_rgba(244,194,194,0.28)] hover:shadow-[0_8px_35px_rgba(244,194,194,0.48)] hover:scale-[1.02] active:scale-[0.98]';
   } else if (variant === 'outline') {
     variantClasses =
-      'bg-[#08080A]/80 text-[#F5E6CA] border border-[#D4AF37]/40 hover:border-[#F5E6CA] hover:bg-[#D4AF37]/15 hover:text-[#FFFFFF] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] hover:scale-[1.01] active:scale-[0.98] backdrop-blur-md';
+      'bg-[#FAFAFA]/80 text-[#333333] border border-[#F4C2C2]/40 hover:border-[#E8B4B8] hover:bg-[#F4C2C2]/15 hover:text-[#333333] shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_25px_rgba(244,194,194,0.3)] hover:scale-[1.01] active:scale-[0.98] backdrop-blur-md';
   } else if (variant === 'black') {
     variantClasses =
-      'bg-[#121216] text-[#F5E6CA] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#1A1A22] hover:text-[#FFFFFF] shadow-[0_10px_30px_rgba(0,0,0,0.8)] hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.01] active:scale-[0.98]';
+      'bg-[#FFFFFF] text-[#333333] border border-[#F4C2C2]/30 hover:border-[#F4C2C2] hover:bg-[#FDFBFB] hover:text-[#333333] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_0_20px_rgba(244,194,194,0.25)] hover:scale-[1.01] active:scale-[0.98]';
   } else if (variant === 'subtle') {
     variantClasses =
-      'bg-transparent text-[#F5E6CA] hover:text-[#FFFFFF] hover:scale-[1.02] active:scale-[0.98]';
+      'bg-transparent text-[#333333] hover:text-[#333333] hover:scale-[1.02] active:scale-[0.98]';
   }
 
   const content = (
@@ -57,8 +57,8 @@ export function LuxuryButton({
       {/* Corner Brackets Accents for luxury look (except subtle variant) */}
       {variant !== 'subtle' && (
         <>
-          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#D4AF37] opacity-60 group-hover:opacity-100 transition-opacity" />
-          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#D4AF37] opacity-60 group-hover:opacity-100 transition-opacity" />
+          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#F4C2C2] opacity-60 group-hover:opacity-100 transition-opacity" />
+          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#F4C2C2] opacity-60 group-hover:opacity-100 transition-opacity" />
         </>
       )}
 
@@ -73,7 +73,7 @@ export function LuxuryButton({
 
       {/* Animated Underline for subtle variant */}
       {variant === 'subtle' && (
-        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#D4AF37] group-hover:w-full transition-all duration-300" />
+        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#F4C2C2] group-hover:w-full transition-all duration-300" />
       )}
     </>
   );
