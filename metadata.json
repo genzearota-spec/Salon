@@ -1,6 +1,6 @@
 {
-  "name": "Aura Unisex Salon",
-  "description": "Luxury unisex salon web app for Aura Unisex Salon at Baner - Pashan Link Road, Pune, Maharashtra.",
+  "name": "Hairport Salon by Nora",
+  "description": "Luxury unisex salon web app for Hairport Salon by Nora at Salunkhe Vihar Society, Kondhwa, Pune, Maharashtra.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

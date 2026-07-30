@@ -1,150 +1,74 @@
-import { useState } from 'react';
-import { Maximize2, Info, Camera } from 'lucide-react';
-import { GALLERY_ITEMS, GalleryItem } from '../types';
-import { LightBoxModal } from './LightBoxModal';
-import { ThreeDCard } from './ThreeDCard';
+import React, { useRef, useEffect } from 'react';
 
-type FilterCategory = 'ALL' | 'THE SPACE' | 'THE DETAIL' | 'THE EXPERIENCE';
+import salon1 from '../assets/images/salon_interior_styling_1785401599830.jpg';
+import salon2 from '../assets/images/salon_spa_area_1785401622046.jpg';
+import salon3 from '../assets/images/salon_makeup_station_1785401638368.jpg';
+import salon4 from '../assets/images/salon_exterior_1785401656424.jpg';
 
 export function GallerySection() {
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>('ALL');
-  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-
-  const filterTabs: FilterCategory[] = ['ALL', 'THE SPACE', 'THE DETAIL', 'THE EXPERIENCE'];
-
-  const filteredItems = activeFilter === 'ALL'
-    ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter((item) => item.category === activeFilter);
-
-  const handleNext = () => {
-    if (!selectedItem) return;
-    const currentIndex = filteredItems.findIndex((i) => i.id === selectedItem.id);
-    const nextIndex = (currentIndex + 1) % filteredItems.length;
-    setSelectedItem(filteredItems[nextIndex]);
-  };
-
-  const handlePrev = () => {
-    if (!selectedItem) return;
-    const currentIndex = filteredItems.findIndex((i) => i.id === selectedItem.id);
-    const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
-    setSelectedItem(filteredItems[prevIndex]);
-  };
+  const items = [
+    {
+      type: 'image',
+      url: salon1,
+      alt: 'Premium Salon Interior',
+      span: 'col-span-1 md:col-span-2 row-span-2'
+    },
+    {
+      type: 'image',
+      url: salon2,
+      alt: 'Luxury Hair & Spa Area',
+      span: 'col-span-1 row-span-1'
+    },
+    {
+      type: 'image',
+      url: salon3,
+      alt: 'Bridal Makeup Station',
+      span: 'col-span-1 row-span-1'
+    },
+    {
+      type: 'image',
+      url: salon4,
+      alt: 'Hairport Salon Exterior',
+      span: 'col-span-1 md:col-span-2 row-span-1'
+    }
+  ];
 
   return (
-    <section id="gallery" className="py-24 bg-[#FAFAFA] text-[#4A4A4A] relative overflow-hidden border-t border-[#F4C2C2]/20">
-      
-      {/* Background Ambient Radial Orbs */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[radial-gradient(circle,rgba(244,194,194,0.08)_0%,transparent_70%)] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(244,194,194,0.08)_0%,transparent_70%)] rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="gallery" className="py-24 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6]">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-4">Our Gallery</h2>
+          <p className="font-sans text-muted max-w-2xl mx-auto">Explore our portfolio of stunning transformations, bridal styling, and our premium salon environment.</p>
+        </div>
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-[#F4C2C2]/20 gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Camera className="w-4 h-4 text-[#F4C2C2]" />
-              <span className="text-xs uppercase tracking-[0.3em] text-[#333333] font-bold">
-                EDITORIAL ATMOSPHERE
-              </span>
-            </div>
-            <h2 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#333333]">
-              VISUAL GALLERY
-            </h2>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {filterTabs.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 text-xs uppercase tracking-[0.2em] font-bold transition-all rounded-sm backdrop-blur-md ${
-                  activeFilter === filter
-                    ? 'bg-gradient-to-r from-[#F4C2C2] via-[#F4C2C2] to-[#E8B4B8] text-[#FAFAFA] shadow-[0_4px_15px_rgba(244,194,194,0.3)]'
-                    : 'bg-[#FFFFFF]/90 text-[#4A4A4A] hover:text-[#333333] hover:bg-[#1A1A22] border border-[#F4C2C2]/25'
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Note for Owner */}
-        <div className="mb-10 p-4 bg-[#FFFFFF] border-l-4 border-[#F4C2C2] rounded-r-sm flex items-center gap-3 text-xs text-[#4A4A4A] shadow-md border border-[#F4C2C2]/20 border-l-transparent">
-          <Info className="w-4 h-4 text-[#F4C2C2] shrink-0" />
-          <span>
-            <strong className="text-[#333333]">Concept Gallery:</strong> High-resolution curated interior and aesthetic photography. The salon owner can easily replace these with actual photos of Aura Unisex Salon.
-          </span>
-        </div>
-
-        {/* Vertical Stacking Gallery */}
-        <div className="flex flex-col gap-12 sm:gap-16 relative pb-12">
-          {filteredItems.map((item, index) => {
-            return (
-              <div
-                key={item.id}
-                className="sticky w-full z-10"
-                style={{ top: '15vh' }}
-              >
-                <ThreeDCard
-                  depth={20}
-                  className="w-full h-full"
-                >
-                  <div
-                    onClick={() => setSelectedItem(item)}
-                    className="group relative overflow-hidden bg-[#FFFFFF] rounded-2xl border border-[#F4C2C2]/30 hover:border-[#F4C2C2] cursor-pointer transition-all duration-500 flex flex-col justify-end shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(244,194,194,0.15)] min-h-[400px] sm:min-h-[600px] w-full"
-                  >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out filter brightness-90 group-hover:brightness-100"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA]/95 via-[#FAFAFA]/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
-
-                  {/* Top Category Badge */}
-                  <div className="absolute top-4 left-4 z-10 bg-[#FAFAFA]/90 backdrop-blur-md px-3 py-1 rounded-sm border border-[#F4C2C2]/30 shadow-md">
-                    <span className="text-[9px] tracking-[0.25em] text-[#F4C2C2] uppercase font-bold">
-                      {item.category}
-                    </span>
-                  </div>
-
-                  {/* Hover Zoom Icon */}
-                  <div className="absolute top-4 right-4 z-10 p-2.5 rounded-sm bg-[#FAFAFA]/90 text-[#333333] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md border border-[#F4C2C2]/30">
-                    <Maximize2 className="w-4 h-4 text-[#F4C2C2]" />
-                  </div>
-
-                  {/* Bottom Overlay Label */}
-                  <div className="relative p-6 z-10 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-[#333333] group-hover:text-gold-gradient transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#4A4A4A]/85 mt-2 font-bold leading-relaxed line-clamp-2">
-                      {item.caption}
-                    </p>
-                  </div>
-                </div>
-              </ThreeDCard>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
+          {items.map((item, idx) => (
+            <div key={idx} className={`relative group overflow-hidden rounded-2xl ${item.span}`}>
+              {item.type === 'video' ? (
+                <video 
+                  src={item.url} 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <img 
+                  src={item.url} 
+                  alt={item.alt} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none">
+                <span className="text-white font-display font-medium p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  {item.alt}
+                </span>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
-
       </div>
-
-      {/* Lightbox Modal */}
-      <LightBoxModal
-        item={selectedItem}
-        items={filteredItems}
-        onClose={() => setSelectedItem(null)}
-        onSelectNext={handleNext}
-        onSelectPrev={handlePrev}
-      />
     </section>
   );
 }
-
-
