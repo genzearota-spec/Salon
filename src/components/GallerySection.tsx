@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import salon1 from '../assets/images/salon_interior_styling_1785401599830.jpg';
 import salon2 from '../assets/images/salon_spa_area_1785401622046.jpg';
 import salon3 from '../assets/images/salon_makeup_station_1785401638368.jpg';
-import salon4 from '../assets/images/salon_exterior_1785401656424.jpg';
+import salon4 from '../assets/images/salon_exterior_apple_1785585069471.jpg';
 
 export function GallerySection() {
   const items = [
@@ -28,14 +28,15 @@ export function GallerySection() {
     {
       type: 'image',
       url: salon4,
-      alt: 'Hairport Salon Exterior',
+      alt: 'THE APPLE Exterior',
       span: 'col-span-1 md:col-span-2 row-span-1'
     }
   ];
 
   return (
-    <section id="gallery" className="py-24 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6]">
-      <div className="max-w-6xl mx-auto">
+    <section id="gallery" className="relative py-24 px-6 sm:px-12 lg:px-24 border-t border-[#d4af37]/15">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[50vh] bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.03)_0%,_transparent_70%)] pointer-events-none"></div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-4">Our Gallery</h2>
           <p className="font-sans text-muted max-w-2xl mx-auto">Explore our portfolio of stunning transformations, bridal styling, and our premium salon environment.</p>
